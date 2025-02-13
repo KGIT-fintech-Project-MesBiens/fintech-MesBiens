@@ -52,6 +52,9 @@ public class ShopVO {
 
     @Column(name="quantity", nullable = false)
     private int quantity; // 구매 수량
+    
+    @Column(name="product_image_url")
+    private String productImageUrl;
 
     @Column(name="total_price", nullable = false)
     private int totalPrice; // 총 결제 금액
