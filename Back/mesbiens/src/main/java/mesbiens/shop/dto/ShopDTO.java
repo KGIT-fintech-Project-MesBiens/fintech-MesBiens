@@ -14,6 +14,7 @@ public class ShopDTO {
     private int accountNo; // 계좌No
     private String bankName; // 은행이름
     private String accountNumber; // 계좌번호
+    private String productImageUrl;
     private int productNo; // 제품No
     private String productName; // 제품 이름
     private int quantity; // 제품 수량
@@ -28,6 +29,7 @@ public class ShopDTO {
         dto.setAccountNo(shop.getAccount().getAccountNo());
         dto.setBankName(shop.getBankName());
         dto.setAccountNumber(shop.getAccountNumber());
+        dto.setProductImageUrl(shop.getProductImageUrl());
         dto.setProductNo(shop.getProduct().getProductNo());
         dto.setProductName(shop.getProduct().getProductName());
         dto.setQuantity(shop.getQuantity());

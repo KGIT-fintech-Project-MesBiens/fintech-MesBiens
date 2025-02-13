@@ -16,7 +16,7 @@ const PurchasePage: React.FC = () => {
   const { selectedProducts } = location.state || { selectedProducts: [] };
   const [accounts, setAccounts] = useState<{ accountNo: number; accountName: string; accountNumber: string; accountBalance: number; }[]>([]);
   const [selectedAccount, setSelectedAccount] = useState<string | null>(null);
-  
+
   // ✅ 백엔드에서 가져올 구매 목록 데이터 상태
   const [purchaseList, setPurchaseList] = useState<PurchaseItem[]>(selectedProducts);
 
@@ -27,8 +27,8 @@ const PurchasePage: React.FC = () => {
       return acc;
     }, {})
   );
-  
-  
+
+
 
   // ✅ 구매 개수 입력 핸들러
   const handleQuantityChange = (productNo: number, newQuantity: number) => {
@@ -56,6 +56,7 @@ const PurchasePage: React.FC = () => {
 
       const data = await response.json();
       setPurchaseList(data.purchaseList);
+      console.log(data.purchaseList);
       setPurchaseQuantities(data.purchaseList.reduce((acc: any, item: PurchaseItem) => ({ ...acc, [item.productNo]: item.quantity }), {}));
 
       if (data.length > 0) setSelectedAccount(data[0].accountNumber); // ✅ 기본 선택값을 accountNumber로 변경
@@ -119,7 +120,7 @@ const PurchasePage: React.FC = () => {
       )
       .toLocaleString();
   };
-  
+
 
   // ✅ 결제 처리하기
   const handlePurchase = async () => {

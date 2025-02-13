@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BC, C } from "./style";
 import { H2 } from "../../../components/htags/style";
 import HorizontalDivider from "../../../components/divider/HorizontalDivider";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../modules/store/store";
+
 
 type ChatInfo = {
   chatNo: number;
@@ -26,7 +27,8 @@ export const ChatContent: React.FC = () => {
   const [chatSessionId, setChatSessionId] = useState(""); // 채팅 세션 아이디
   const memberNo = useSelector((state: RootState) => state.user.member.memberNo);
 
-  console.log("memberNo" + memberNo);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  // console.log("memberNo" + memberNo);
 
   const fetchChatData = async () => {
     try {
@@ -97,14 +99,16 @@ export const ChatContent: React.FC = () => {
   };
 
   useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
     fetchChatData(); // 처음 마운트 시 즉시 데이터 불러오기
-
     const interval = setInterval(() => {
       fetchChatData();
     }, 30000); // 30초마다 실행
 
     return () => clearInterval(interval); // 언마운트 시 인터벌 제거
-  }, []);
+  }, [chats]);
 
 
 
@@ -113,7 +117,9 @@ export const ChatContent: React.FC = () => {
     <BC.ChatArea>
       <H2>채팅</H2>
       <HorizontalDivider />
-      <C.ChatContainer>
+      <C.ChatContainer
+        ref={containerRef}
+      >
         <C.ChatUl>
           {chats.map((chat) => (
             <C.ChatLi key={chat.chatNo}>

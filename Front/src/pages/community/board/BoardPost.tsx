@@ -365,7 +365,7 @@ const BoardPost: React.FC = () => {
 
 
       <BP.CommentsSection>
-        <BP.h3>댓글</BP.h3>
+        <BP.H3>댓글</BP.H3>
         {comments.length > 0 ? (
           comments.map((comment) => (
             <BP.Comment key={comment.postCommentNo}>
