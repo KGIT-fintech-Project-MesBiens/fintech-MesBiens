@@ -78,6 +78,7 @@ const FindIDPage: React.FC = () => {
         alert(`인증 성공!`);
         // 비밀번호 수정 페이지로 이동하거나 비밀번호 변경 기능을 활성화합니다.
         setShowID(true);
+        setShowPwdReset(true);
       } else {
         const errorText = await response.text();
         alert(`인증 실패: ${errorText}`);
