@@ -6,14 +6,21 @@ const NaverLoginButton = () => {
   };
 
   return (
-    <button 
-      onClick={handleLogin} 
+    <button
+      onClick={handleLogin}
       className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center border border-gray-300 shadow-md"
+      style={{
+        width: "3rem",
+        border: "none",
+        background: "none",
+        cursor: "pointer",
+      }}
     >
-      {/* Naver SVG 로고 (크기 조정, 흰색 유지) */}
-      <svg width="28" height="28" viewBox="0 0 24 24">
-        <path fill="white" d="M3 3h6l6 9V3h6v18h-6l-6-9v9H3z"/>
-      </svg>
+      <img
+        src={`${process.env.PUBLIC_URL}/images/SNSLogins/naver_sns_circle.png`}
+        alt="naver"
+        style={{ width: "100%" }}
+      />
     </button>
   );
 };
