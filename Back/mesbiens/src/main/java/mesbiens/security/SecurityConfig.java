@@ -44,6 +44,8 @@ public class SecurityConfig {
            .csrf(csrf -> csrf.disable())
            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // JWT 사용 시 Stateless 유지
            .authorizeHttpRequests(auth -> auth
+        	   .requestMatchers("/shop/**").permitAll()
+        		   
                .requestMatchers(
                      
                    "/members/register", "/members/login", "/members/{id}", "/quiz/create", "/members/me",
@@ -84,7 +86,7 @@ public class SecurityConfig {
        CorsConfiguration configuration = new CorsConfiguration();
        
        configuration.setAllowedOrigins(List.of("http://localhost:4000")); 
-       configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // OPTIONS 추가
+       configuration.setAllowedMethods(List.of("GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS")); // OPTIONS 추가
        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type")); 
        configuration.setAllowCredentials(true);
        

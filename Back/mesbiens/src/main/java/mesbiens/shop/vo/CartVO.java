@@ -48,6 +48,9 @@ public class CartVO {
     @Column(name = "quantity", nullable = false)
     private int quantity; // 상품 개수
     
+    @Column(name = "product_image_url")
+    private String ProductImageUrl;
+    
     private String ischecked; // 장바구니 상품체크 여부
 
     // 총 금액 계산

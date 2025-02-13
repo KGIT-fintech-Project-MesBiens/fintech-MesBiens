@@ -329,7 +329,7 @@ export const BP = {
     padding-top: 15px;
     border-top: 2px solid #e0e0e0;
   `,
-  h3: styled.h3`
+  H3: styled.h3`
     font-size: 1.2em;
     font-weight: bold;
     color: #333;
@@ -570,7 +570,7 @@ export const C = {
   ChatContainer: styled.div`
     display: block;
     height: 70%;
-    overflow-y: auto;
+    overflow-y: scroll;
     &::-webkit-scrollbar {
       width: 7px;
     }

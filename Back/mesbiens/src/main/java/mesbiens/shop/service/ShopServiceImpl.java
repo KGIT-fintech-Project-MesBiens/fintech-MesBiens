@@ -64,6 +64,7 @@ public class ShopServiceImpl implements ShopService {
                     dto.setMemberName(member.getMemberName());
                     dto.setProductNo(cart.getProduct().getProductNo());
                     dto.setProductName(cart.getProduct().getProductName());
+                    dto.setProductImageUrl(cart.getProductImageUrl());
                     dto.setQuantity(cart.getQuantity());
                     dto.setTotalPrice(cart.getQuantity() * cart.getProduct().getProductPrice());
                     return dto;
